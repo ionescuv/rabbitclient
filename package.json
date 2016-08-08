@@ -1,0 +1,22 @@
+{
+  "name": "rabbitclient",
+  "version": "1.0.0",
+  "description": "rabbit client demo",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ionescuv/rabbitclient.git"
+  },
+  "author": "ionescuv",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ionescuv/rabbitclient/issues"
+  },
+  "homepage": "https://github.com/ionescuv/rabbitclient#readme",
+  "dependencies": {
+    "rabbit.js": "^0.4.4"
+  }
+}
