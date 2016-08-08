@@ -39,9 +39,11 @@ var context = require('rabbit.js').createContext(amqpURL, connOpt);
 context.on('ready', function() {
     console.log('Connected to the Rabbit!');
     var sub = context.socket('SUB');
-    sub.pipe(process.stdout);
+    //sub.pipe(process.stdout);
     sub.connect('messages', function(){
         console.log('Connected to topic [messages]');
+        sub.setEncoding('utf8');
+        sub.on('data', function(note) { console.log("[INSTANCE #%s]----  MSG received: < %s >", appEnv.app.instance_index ,note); });
     });
 });
 

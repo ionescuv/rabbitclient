@@ -1,12 +1,14 @@
 ---
 applications:
 - name: subscriber
-  memory: 512M
+  memory: 128M
   command: node sub.js
+  instances: 3
+  no-route: true
   services:
   - amqp
 - name: publisher
-  memory: 512M
+  memory: 128M
   command: node pub.js
   services:
   - amqp

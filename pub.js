@@ -23,11 +23,12 @@ console.log('running service URL: %s', appURL);
 
 // Rabbit MQ setup
 var connOpt = {};
+var pub = {};
 var context = require('rabbit.js').createContext(amqpURL, connOpt);
 
 context.on('ready', function() {
     console.log('Connected to the Rabbit!');
-    var pub = context.socket('PUB');
+    pub = context.socket('PUB');
     pub.connect('messages', function(){
         console.log('PUBLISHER connected to topic [messages]');
     });
@@ -46,7 +47,12 @@ context.on('close', function(error){
 
 var server = http.createServer(function (request, response) {
     console.log('Broadcasting path <%s> across messaging queue...', request.url);
-    pub.write("testcontent", 'utf8');
+    if (pub) {
+        pub.write(request.url, 'utf8');
+        console.log("----  MSG sent: < %s >", request.url);
+    }
+    else
+        console.log('publisher not yet initialized');
     response.end('It Works!! Path Hit: ' + request.url);
 });
 
