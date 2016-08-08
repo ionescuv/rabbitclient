@@ -1,0 +1,12 @@
+---
+applications:
+- name: subscriber
+  memory: 512M
+  command: node sub.js
+  services:
+  - amqp
+- name: publisher
+  memory: 512M
+  command: node pub.js
+  services:
+  - amqp

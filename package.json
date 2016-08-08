@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/ionescuv/rabbitclient#readme",
   "dependencies": {
+    "cfenv": "^1.0.3",
+    "fs-sync": "^1.0.2",
+    "properties-parser": "^0.3.1",
     "rabbit.js": "^0.4.4"
   }
 }
